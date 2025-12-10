@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETG Calculator - Alcohol Detection Time Calculator 2025</title>
+<meta name="description" content="Free ETG (Ethyl Glucuronide) Calculator to estimate alcohol detection time in urine. Calculate detection window, risk status, and time until ETG is undetectable based on drinks, body weight, and hydration level.">
+<meta name="keywords" content="ETG calculator, ethyl glucuronide calculator, alcohol detection time, ETG test calculator, urine alcohol test, ETG detection window, alcohol metabolite calculator">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://yourdomain.com/etg-calculator">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HGFBJ597ZK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HGFBJ597ZK');
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 10px;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 16px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-bottom: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-brand {
+  color: #1e3a8a;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+
+/* Calculator Section */
+.etg-calculator {
+  max-width: 950px;
+  margin: 0 auto 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 45px 40px;
+}
+
+.calc-header {
+  text-align: center;
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 3px solid #e5e7eb;
+}
+
+.calc-title {
+  font-size: 34px;
+  font-weight: 900;
+  color: #1e3a8a;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.calc-description {
+  font-size: 15.5px;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 9px;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  cursor: help;
+  font-size: 18px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 280px;
+  background-color: #1f2937;
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 12px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  background: #ffffff;
+  transition: all 0.25s ease;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.12);
+  transform: translateY(-1px);
+}
+
+.form-input.error,
+.form-select.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+}
+
+.range-slider {
+  width: 100%;
+  margin-top: 10px;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  outline: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1e3a8a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1e3a8a;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.unit-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.unit-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: 2px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #6b7280;
+  font-family: 'Inter', sans-serif;
+}
+
+.unit-btn.active {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #ffffff;
+  border-color: #1e3a8a;
+}
+
+.unit-btn:hover:not(.active) {
+  background: #e5e7eb;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 6px;
+  display: block;
+  font-weight: 600;
+}
+
+.button-group {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 35px;
+}
+
+.btn {
+  flex: 1;
+  padding: 15px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(30, 58, 138, 0.45);
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+/* Result Area */
+.result-area {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 3px solid #16a34a;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 30px;
+  display: none;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  font-size: 22px;
+  font-weight: 800;
+  color: #15803d;
+  margin-bottom: 22px;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.result-table th {
+  background: #15803d;
+  color: #ffffff;
+  padding: 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.result-table th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.result-table th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.result-table td {
+  padding: 16px 14px;
+  border-bottom: 2px solid #bbf7d0;
+  background: #ffffff;
+  vertical-align: top;
+}
+
+.result-table tr:last-child td {
+  border-bottom: none;
+}
+
+.result-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.result-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.result-box {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 17px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.risk-low {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #15803d;
+  border: 2px solid #15803d;
+}
+
+.risk-medium {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  border: 2px solid #f59e0b;
+}
+
+.risk-high {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  border: 2px solid #ef4444;
+}
+
+.result-desc {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+
+/* Info Sections */
+.info-section {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+  border: 2px solid #e5e7eb;
+}
+
+.info-section h3 {
+  font-size: 21px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 18px;
+  letter-spacing: 0.2px;
+}
+
+.info-section h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 10px;
+  margin-top: 18px;
+}
+
+.info-section p,
+.info-section li {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.info-section ul,
+.info-section ol {
+  padding-left: 22px;
+  margin-top: 12px;
+}
+
+.info-section li {
+  margin-bottom: 12px;
+}
+
+.info-box {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 14px;
+  transition: all 0.3s ease;
+}
+
+.info-box:hover {
+  border-color: #1e3a8a;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.1);
+  transform: translateX(6px);
+}
+
+/* Disclaimer Box */
+.disclaimer {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 5px solid #f59e0b;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.8;
+  margin-top: 28px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.disclaimer strong {
+  color: #78350f;
+  font-weight: 700;
+}
+
+.disclaimer ul {
+  margin-top: 12px;
+  padding-left: 22px;
+}
+
+.disclaimer li {
+  margin-bottom: 10px;
+}
+
+/* Content Section */
+.content {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 950px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.content h1 {
+  font-size: 34px;
+  margin-bottom: 18px;
+  color: #1e3a8a;
+  line-height: 1.3;
+  font-weight: 900;
+}
+
+.content h2 {
+  font-size: 26px;
+  margin-top: 35px;
+  margin-bottom: 14px;
+  color: #374151;
+  border-bottom: 3px solid #e5e7eb;
+  padding-bottom: 10px;
+  font-weight: 800;
+}
+
+.content h3 {
+  font-size: 20px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #4b5563;
+  font-weight: 700;
+}
+
+.content p {
+  margin-bottom: 18px;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+.content ul,
+.content ol {
+  margin-left: 26px;
+  margin-bottom: 18px;
+}
+
+.content li {
+  margin-bottom: 12px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* Footer */
+footer {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 28px 24px;
+  text-align: center;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+footer ul li {
+  display: inline-block;
+  margin: 0 18px;
+}
+
+footer a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: #1e3a8a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 15px 8px;
+  }
+
+  .etg-calculator,
+  .content {
+    padding: 28px 22px;
+    margin: 0 0 25px;
+    border-radius: 14px;
+  }
+
+  .calc-title {
+    font-size: 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar {
+    padding: 14px 18px;
+  }
+
+  .navbar-brand {
+    font-size: 19px;
+  }
+
+  .result-table {
+    font-size: 13px;
+  }
+
+  .result-table th,
+  .result-table td {
+    padding: 10px 8px;
+  }
+
+  .result-box {
+    min-width: 100px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .calc-title {
+    font-size: 24px;
+  }
+
+  .tooltip-text {
+    width: 220px;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="#">🧪 ETG Detection Calculator</a>
+</nav>
+
+<!-- Calculator Section -->
+<div class="etg-calculator">
+  <div class="calc-header">
+    <h2 class="calc-title">ETG Calculator - Alcohol Detection Time</h2>
+    <p class="calc-description">Calculate the estimated detection time for ETG (Ethyl Glucuronide) in urine after alcohol consumption. Get your detection window, risk status, and time until ETG becomes undetectable.</p>
+  </div>
+
+  <form id="etgForm" onsubmit="return false;">
+    <div class="form-grid">
+      <div class="form-group">
+        <label class="form-label">
+          🍺 Number of Standard Drinks
+          <span class="tooltip">
+            ℹ️
+            <span class="tooltip-text">1 standard drink = 12 oz beer (5% ABV), 5 oz wine (12% ABV), or 1.5 oz liquor (40% ABV)</span>
+          </span>
+        </label>
+        <input type="number" class="form-input" id="drinks" min="0" step="0.1" placeholder="e.g., 3" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">⏱️ Hours Since Last Drink</label>
+        <input type="number" class="form-input" id="hours" min="0" step="0.1" placeholder="e.g., 12" required>
+        <input type="range" class="range-slider" id="hoursSlider" min="0" max="80" step="0.5" value="12">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          ⚖️ Body Weight (Optional)
+          <span class="tooltip">
+            ℹ️
+            <span class="tooltip-text">Weight improves accuracy as it affects alcohol metabolism rate</span>
+          </span>
+        </label>
+        <input type="number" class="form-input" id="weight" min="0" step="0.1" placeholder="e.g., 70">
+        <div class="unit-toggle">
+          <button type="button" class="unit-btn active" data-unit="kg" onclick="toggleUnit('kg')">kg</button>
+          <button type="button" class="unit-btn" data-unit="lb" onclick="toggleUnit('lb')">lb</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          👤 Gender
+          <span class="tooltip">
+            ℹ️
+            <span class="tooltip-text">Gender affects alcohol metabolism due to differences in body composition and enzyme levels</span>
+          </span>
+        </label>
+        <select class="form-select" id="gender" required>
+          <option value="" disabled selected>-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Prefer not to say</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">💧 Hydration Level</label>
+        <select class="form-select" id="hydration" required>
+          <option value="" disabled selected>-- Select Hydration Level --</option>
+          <option value="well">Well Hydrated</option>
+          <option value="normal">Normal Hydration</option>
+          <option value="dehydrated">Dehydrated</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="btn btn-primary" onclick="calculateETG()">🧮 Calculate ETG Detection</button>
+      <button type="reset" class="btn btn-secondary" onclick="resetETG()">🔄 Clear Form</button>
+      <button type="button" class="btn btn-secondary" onclick="shareETG()">📤 Share</button>
+    </div>
+
+    <div class="result-area" id="resultArea">
+      <h3 class="result-header">📊 ETG Detection Results</h3>
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Result</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Estimated Detection Window</strong></td>
+            <td><div class="result-box" id="detectionWindow">24 hours</div></td>
+            <td><div class="result-desc" id="detectionDesc">ETG may be detectable in urine for up to this duration after your last drink.</div></td>
+          </tr>
+          <tr>
+            <td><strong>Current Risk Status</strong></td>
+            <td><div class="result-box risk-low" id="riskStatus">Low</div></td>
+            <td><div class="result-desc" id="riskDesc">Your current risk of testing positive for ETG.</div></td>
+          </tr>
+          <tr>
+            <td><strong>Time Until Clear</strong></td>
+            <td><div class="result-box" id="timeToClear">12 hours</div></td>
+            <td><div class="result-desc" id="clearDesc">Estimated time until ETG is no longer detectable in your system.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+
+  <div class="info-section">
+    <h3>💡 Understanding ETG Testing</h3>
+    <div class="info-box">
+      <h4>What is ETG?</h4>
+      <p>ETG (Ethyl Glucuronide) is a direct metabolite of ethanol (alcohol) that can be detected in urine, blood, and hair. Unlike traditional BAC (Blood Alcohol Concentration) tests that measure current intoxication, ETG testing detects recent alcohol consumption—even after alcohol has been completely metabolized from your system.</p>
+    </div>
+
+    <div class="info-box">
+      <h4>Detection Window</h4>
+      <p>ETG can typically be detected in urine for <strong>24-80 hours</strong> after drinking, depending on several factors including:</p>
+      <ul>
+        <li>Amount of alcohol consumed</li>
+        <li>Individual metabolism rate</li>
+        <li>Body weight and composition</li>
+        <li>Hydration level</li>
+        <li>Liver function</li>
+        <li>Frequency of alcohol use</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h4>ETG vs BAC</h4>
+      <p><strong>BAC (Blood Alcohol Concentration)</strong> measures current alcohol levels and typically clears within 12-24 hours. <strong>ETG testing</strong> detects alcohol metabolites that remain in your system much longer—up to 3-4 days after drinking stops.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>⚠️ Important Disclaimer:</strong> This ETG calculator provides <em>estimates only</em> based on average metabolism rates and scientific research. Actual ETG detection times vary significantly between individuals based on numerous factors.<br><br>
+    
+    <strong>This tool is for educational purposes only and should NOT be used to:</strong>
+    <ul>
+      <li>Make decisions about driving or operating machinery</li>
+      <li>Determine fitness for work or legal proceedings</li>
+      <li>Replace professional medical advice or laboratory testing</li>
+      <li>Predict exact test results with certainty</li>
+    </ul>
+    
+    <p>👉 Always consult with medical professionals for accurate testing and interpretation. If you're subject to alcohol testing for legal, employment, or medical reasons, the only way to ensure a negative result is to abstain from alcohol consumption well in advance of testing.</p>
+  </div>
+</div>
+
+<!-- Content Section -->
+<div class="content">
+  <h1>ETG Calculator: Complete Guide to Alcohol Detection Testing</h1>
+  
+  <p>ETG (Ethyl Glucuronide) testing has become one of the most reliable methods for detecting recent alcohol consumption. Unlike traditional breathalyzer or blood alcohol tests that only detect current intoxication, ETG testing can identify alcohol use for days after consumption has stopped.</p>
+
+  <h2>What is ETG Testing?</h2>
+  <p>ETG testing measures the presence of Ethyl Glucuronide, a direct metabolite of ethanol (alcohol), in biological samples—most commonly urine. When you consume alcohol, your liver produces ETG as it breaks down the ethanol. This metabolite remains detectable in your system long after the alcohol itself has been eliminated.</p>
+
+  <h2>How Long Does ETG Stay in Your System?</h2>
+  <p>The detection window for ETG varies based on multiple factors, but general guidelines are:</p>
+  <ul>
+    <li><strong>Light drinking (1-3 drinks):</strong> 24-48 hours</li>
+    <li><strong>Moderate drinking (4-6 drinks):</strong> 48-72 hours</li>
+    <li><strong>Heavy drinking (7+ drinks):</strong> 72-80+ hours</li>
+  </ul>
+
+  <p>However, these are approximate ranges. Individual factors can significantly extend or shorten detection times.</p>
+
+  <h2>Factors Affecting ETG Detection Time</h2>
+  
+  <h3>1. Amount of Alcohol Consumed</h3>
+  <p>The more alcohol you consume, the longer ETG will be detectable. Heavy drinking sessions produce higher concentrations of ETG that take longer to eliminate from your system.</p>
+
+  <h3>2. Body Weight and Composition</h3>
+  <p>Larger individuals with more body mass typically metabolize alcohol faster than smaller individuals. Additionally, muscle tissue metabolizes alcohol more efficiently than fat tissue.</p>
+
+  <h3>3. Gender</h3>
+  <p>Biological differences affect alcohol metabolism. Women generally have lower levels of alcohol dehydrogenase (the enzyme that breaks down alcohol), leading to slower metabolism and potentially longer ETG detection times.</p>
+
+  <h3>4. Hydration Level</h3>
+  <p>Proper hydration supports kidney function and can help eliminate ETG more quickly through urine. Dehydration may concentrate ETG in urine and extend detection times.</p>
+
+  <h3>5. Liver Function</h3>
+  <p>Your liver's health directly impacts how quickly it can process alcohol and produce ETG. Impaired liver function may slow metabolism and extend detection windows.</p>
+
+  <h3>6. Frequency of Alcohol Use</h3>
+  <p>Chronic drinkers may have ETG accumulate in their system, leading to longer detection times even after stopping drinking.</p>
+
+  <h2>ETG Testing Cutoff Levels</h2>
+  <p>Different testing programs use different cutoff levels to determine a positive result:</p>
+  <ul>
+    <li><strong>100 ng/mL:</strong> Most sensitive, used for zero-tolerance programs</li>
+    <li><strong>250 ng/mL:</strong> Common in legal and employment settings</li>
+    <li><strong>500 ng/mL:</strong> Standard cutoff, reduces false positives</li>
+    <li><strong>1000 ng/mL:</strong> Used when detecting recent heavy drinking only</li>
+  </ul>
+
+  <h2>Can You Speed Up ETG Elimination?</h2>
+  <p>While you cannot dramatically speed up ETG elimination, these practices may help:</p>
+  <ul>
+    <li><strong>Hydration:</strong> Drink plenty of water to support kidney function</li>
+    <li><strong>Exercise:</strong> May slightly boost metabolism (but avoid overexertion)</li>
+    <li><strong>Nutrition:</strong> Eat balanced meals to support liver function</li>
+    <li><strong>Rest:</strong> Allow your body time to naturally process and eliminate ETG</li>
+  </ul>
+
+  <p><strong>Important:</strong> No method can guarantee ETG elimination by a specific time. The only reliable way to pass an ETG test is to abstain from alcohol well in advance of testing.</p>
+
+  <h2>False Positives and Incidental Exposure</h2>
+  <p>ETG tests are highly specific, but false positives can occur from:</p>
+  <ul>
+    <li>Mouthwash containing alcohol</li>
+    <li>Hand sanitizer</li>
+    <li>Certain foods cooked with alcohol</li>
+    <li>Some medications and herbal supplements</li>
+    <li>Fermented foods (in rare cases)</li>
+  </ul>
+
+  <p>However, incidental exposures typically produce very low ETG levels (below 100 ng/mL) and are less likely to cause positive results at standard cutoff levels.</p>
+
+  <h2>ETG Testing in Different Contexts</h2>
+  
+  <h3>Legal and Court-Ordered Testing</h3>
+  <p>ETG testing is commonly used in DUI programs, probation monitoring, and child custody cases to verify abstinence from alcohol.</p>
+
+  <h3>Employment Testing</h3>
+  <p>Some safety-sensitive industries use ETG testing to ensure employees are not consuming alcohol, even outside of work hours when prohibited.</p>
+
+  <h3>Medical and Treatment Programs</h3>
+  <p>Addiction treatment programs often use ETG testing to monitor compliance with abstinence requirements and track patient progress.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <h3>Can I dilute my urine to pass an ETG test?</h3>
+  <p>Modern ETG tests include checks for dilution, such as creatinine and specific gravity measurements. Attempting to dilute your sample will likely be detected and may result in a failed test or requirement for retesting.</p>
+
+  <h3>How accurate are ETG tests?</h3>
+  <p>ETG tests are highly accurate when properly administered and interpreted. They have a sensitivity of over 90% and specificity exceeding 95% for detecting recent alcohol consumption.</p>
+
+  <h3>Will one drink show up on an ETG test?</h3>
+  <p>Yes, even a single drink can produce detectable ETG levels. However, the concentration may be low and the detection window shorter (typically 12-24 hours).</p>
+
+  <h3>Can ETG be detected in blood or hair?</h3>
+  <p>Yes, ETG can be detected in blood (shorter window, usually hours to 1-2 days) and hair (much longer window, up to 90 days or more). However, urine testing is most common due to its balance of detection window and ease of collection.</p>
+
+  <h2>Conclusion</h2>
+  <p>ETG testing is a powerful tool for detecting recent alcohol consumption with a detection window significantly longer than traditional methods. Understanding how ETG works, what factors affect detection times, and the limitations of testing can help you make informed decisions.</p>
+  
+  <p>Remember that this calculator provides estimates only. For critical situations involving legal, employment, or medical testing, always consult with qualified professionals and allow ample time for complete alcohol elimination from your system.</p>
+</div>
+
+<footer>
+  <div style="margin-bottom:18px;">
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </div>
+  <div style="color:#6b7280; font-size:14px; font-weight:600;">
+    © 2025 ETG Calculator | Educational Tool Only | Not Medical Advice
+  </div>
+</footer>
+
+<script>
+// Global variables
+let currentUnit = 'kg';
+
+// Sync slider with input
+document.addEventListener('DOMContentLoaded', function() {
+  const hoursInput = document.getElementById('hours');
+  const hoursSlider = document.getElementById('hoursSlider');
+  
+  if (hoursInput && hoursSlider) {
+    hoursSlider.addEventListener('input', function() {
+      hoursInput.value = this.value;
+    });
+    
+    hoursInput.addEventListener('input', function() {
+      hoursSlider.value = this.value;
+    });
+  }
+});
+
+function toggleUnit(unit) {
+  const buttons = document.querySelectorAll('.unit-btn');
+  buttons.forEach(btn => {
+    if (btn.dataset.unit === unit) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  
+  const weightInput = document.getElementById('weight');
+  if (weightInput.value && currentUnit !== unit) {
+    let weight = parseFloat(weightInput.value);
+    if (unit === 'lb') {
+      // Convert kg to lb
+      weightInput.value = (weight * 2.20462).toFixed(1);
+    } else {
+      // Convert lb to kg
+      weightInput.value = (weight / 2.20462).toFixed(1);
+    }
+  }
+  currentUnit = unit;
+}
+
+function clearErrors() {
+  const inputs = document.querySelectorAll('.form-input, .form-select');
+  inputs.forEach(input => {
+    input.classList.remove('error');
+  });
+  const errors = document.querySelectorAll('.error-message');
+  errors.forEach(error => {
+    error.remove();
+  });
+}
+
+function showError(element, message) {
+  element.classList.add('error');
+  const errorSpan = document.createElement('span');
+  errorSpan.className = 'error-message';
+  errorSpan.textContent = message;
+  element.parentNode.appendChild(errorSpan);
+}
+
+function calculateETG() {
+  clearErrors();
+  document.getElementById('resultArea').style.display = 'none';
+
+  // Get inputs
+  const drinks = parseFloat(document.getElementById('drinks').value);
+  const hours = parseFloat(document.getElementById('hours').value);
+  let weight = parseFloat(document.getElementById('weight').value) || 70;
+  const gender = document.getElementById('gender').value;
+  const hydration = document.getElementById('hydration').value;
+
+  let isValid = true;
+
+  // Validate
+  if (isNaN(drinks) || drinks <= 0) {
+    showError(document.getElementById('drinks'), 'Enter valid number of drinks');
+    isValid = false;
+  }
+
+  if (isNaN(hours) || hours < 0) {
+    showError(document.getElementById('hours'), 'Enter valid hours');
+    isValid = false;
+  }
+
+  if (!gender) {
+    showError(document.getElementById('gender'), 'Select gender');
+    isValid = false;
+  }
+
+  if (!hydration) {
+    showError(document.getElementById('hydration'), 'Select hydration level');
+    isValid = false;
+  }
+
+  if (!isValid) return;
+
+  // Convert weight to kg if in lb
+  if (currentUnit === 'lb') {
+    weight = weight / 2.20462;
+  }
+
+  // Calculate detection window (base formula)
+  // General rule: 1 drink = ~12-24 hours detection
+  // Adjusted for weight, gender, and hydration
+  
+  let baseDetection = drinks * 18; // Base hours per drink
+  
+  // Adjust for weight (lighter = longer)
+  const weightFactor = 70 / weight; // Normalize to 70kg
+  baseDetection *= weightFactor;
+  
+  // Adjust for gender
+  if (gender === 'female') {
+    baseDetection *= 1.15; // Females metabolize ~15% slower
+  } else if (gender === 'other') {
+    baseDetection *= 1.08; // Average
+  }
+  
+  // Adjust for hydration
+  if (hydration === 'well') {
+    baseDetection *= 0.85; // 15% faster elimination
+  } else if (hydration === 'dehydrated') {
+    baseDetection *= 1.2; // 20% slower
+  }
+  
+  // Cap maximum at 80 hours
+  const detectionWindow = Math.min(baseDetection, 80);
+  
+  // Calculate time until clear
+  const timeUntilClear = Math.max(0, detectionWindow - hours);
+  
+  // Determine risk status
+  let riskStatus, riskClass, riskDesc;
+  const hoursRemaining = detectionWindow - hours;
+  
+  if (hoursRemaining <= 0) {
+    riskStatus = 'Low Risk';
+    riskClass = 'risk-low';
+    riskDesc = 'ETG is likely undetectable at this time. However, results can vary based on individual factors.';
+  } else if (hoursRemaining <= 12) {
+    riskStatus = 'Low-Medium Risk';
+    riskClass = 'risk-low';
+    riskDesc = 'ETG levels are declining but may still be detectable at sensitive cutoff levels (100-250 ng/mL).';
+  } else if (hoursRemaining <= 24) {
+    riskStatus = 'Medium Risk';
+    riskClass = 'risk-medium';
+    riskDesc = 'ETG is likely still detectable at standard testing cutoffs (500 ng/mL).';
+  } else if (hoursRemaining <= 48) {
+    riskStatus = 'High Risk';
+    riskClass = 'risk-high';
+    riskDesc = 'ETG levels are still elevated. High probability of positive test result at all cutoff levels.';
+  } else {
+    riskStatus = 'Very High Risk';
+    riskClass = 'risk-high';
+    riskDesc = 'ETG levels are significantly elevated. Testing positive is highly likely at all cutoff levels.';
+  }
+  
+  // Display results
+  document.getElementById('detectionWindow').textContent = detectionWindow.toFixed(1) + ' hours';
+  document.getElementById('detectionDesc').textContent = `Based on ${drinks} drink(s), ETG may be detectable in urine for up to ${detectionWindow.toFixed(1)} hours (approximately ${(detectionWindow / 24).toFixed(1)} days) after your last drink.`;
+  
+  const riskBox = document.getElementById('riskStatus');
+  riskBox.textContent = riskStatus;
+  riskBox.className = 'result-box ' + riskClass;
+  document.getElementById('riskDesc').textContent = riskDesc;
+  
+  document.getElementById('timeToClear').textContent = timeUntilClear.toFixed(1) + ' hours';
+  if (timeUntilClear <= 0) {
+    document.getElementById('clearDesc').textContent = 'ETG is estimated to be undetectable at this time based on the inputs provided.';
+  } else {
+    document.getElementById('clearDesc').textContent = `ETG is expected to become undetectable in approximately ${timeUntilClear.toFixed(1)} hours (about ${(timeUntilClear / 24).toFixed(1)} days from now).`;
+  }
+  
+  // Show results
+  document.getElementById('resultArea').style.display = 'block';
+  
+  // Scroll to results
+  setTimeout(() => {
+    document.getElementById('resultArea').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 150);
+}
+
+function resetETG() {
+  clearErrors();
+  document.getElementById('resultArea').style.display = 'none';
+  document.getElementById('etgForm').reset();
+  document.getElementById('hoursSlider').value = 12;
+  currentUnit = 'kg';
+  const buttons = document.querySelectorAll('.unit-btn');
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.dataset.unit === 'kg') {
+      btn.classList.add('active');
+    }
+  });
+}
+
+function shareETG() {
+  const text = 'ETG Calculator - Calculate Alcohol Detection Time in Urine';
+  const url = window.location.href;
+  
+  if (navigator.share) {
+    navigator.share({
+      title: text,
+      text: 'Check out this free ETG Detection Calculator',
+      url: url
+    }).catch(() => {
+      copyToClipboard(url);
+    });
+  } else {
+    copyToClipboard(url);
+  }
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✅ Link copied to clipboard: ' + text);
+    }).catch(() => {
+      alert('📋 Copy this link: ' + text);
+    });
+  } else {
+    alert('📋 Copy this link: ' + text);
+  }
+}
+</script>
+
+</body>
+</html>
